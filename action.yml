@@ -1,0 +1,10 @@
+name: "pr-size-labeler"
+description: "This set a label using a T-Shirt size model"
+inputs:
+  GITHUB_TOKEN:
+  description: "Github Token"
+  required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args: -${{ inputs.GITHUB_TOKEN }}
