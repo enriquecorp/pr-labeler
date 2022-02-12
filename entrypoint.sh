@@ -27,7 +27,7 @@ autolabel() {
 
     additions=$(echo "$body" | jq '.additions')
     deletions=$(echo "$body" | jq '.deletions')
-    total_modifications-$(echo "$additions + $deletions" | bc)
+    total_modifications=$(echo "$additions + $deletions" | bc)
     label_to_add=$(label_for "$total_modifications")
 
     echo "Labeling pull request with $label_to_add"
