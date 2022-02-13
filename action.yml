@@ -4,8 +4,13 @@ inputs:
   GITHUB_TOKEN:
     description: "Github Token"
     required: true
+  l_max_size:
+    description: "Max size for a PR to be considered L"
+    required: false
+    default: "1000"
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
     - ${{ inputs.GITHUB_TOKEN }}
+    - ${{ inputs.l_max_size }}
