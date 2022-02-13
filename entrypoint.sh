@@ -13,7 +13,7 @@ fi
 
 GITHUB_TOKEN="$1"
 
-l_max_size = "$2"
+l_max_size="$2"
 
 URI="https://api.github.com"
 API_HEADER="Accept: application/vnd.github.v3+json"
