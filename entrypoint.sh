@@ -14,6 +14,7 @@ fi
 GITHUB_TOKEN="$1"
 
 l_max_size="$2"
+fail_if_xl="$3"
 
 URI="https://api.github.com"
 API_HEADER="Accept: application/vnd.github.v3+json"
@@ -40,6 +41,11 @@ autolabel() {
       -H "Content-Type: application/json" \
       -d "{\"labels\":[\"${label_to_add}\"]}" \
       "${URI}/repos/${GITHUB_REPOSITORY}/issues/${number}/labels"
+
+    if [ "$label_to_add" == "size/xl" ] && [ "$fail_if_xl" =="true" ]; then
+        echo "PR is too big, short this!"
+        exit 1
+    fi
 }
 
 label_for() {
@@ -59,3 +65,5 @@ label_for() {
 }
 
 autolabel
+
+exit $?

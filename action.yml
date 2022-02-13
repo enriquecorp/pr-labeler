@@ -8,9 +8,14 @@ inputs:
     description: "Max size for a PR to be considered L"
     required: false
     default: "1000"
+  fail_if_xl:
+    description: "It will fail the PR if the size is greater than L"
+    required: false
+    default: "false"
 runs:
   using: "docker"
   image: "Dockerfile"
   args:
     - ${{ inputs.GITHUB_TOKEN }}
     - ${{ inputs.l_max_size }}
+    - ${{ inputs.fail_if_xl }}
